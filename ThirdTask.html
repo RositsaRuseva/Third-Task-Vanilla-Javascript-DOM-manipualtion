@@ -1,0 +1,60 @@
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <h1>Sample page</h1>
+        <div id="row">
+            <div id="col1">
+                <h2>Section 1</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ipsum quam, condimentum ac pulvinar sed, luctus sed libero. Vestibulum vestibulum sodales tellus, sit amet placerat nulla venenatis non. Nunc facilisis est eget facilisis sollicitudin. Proin placerat mi eget consequat congue. </p>
+                <p>Pellentesque finibus convallis magna, in convallis sapien fermentum id. Quisque rutrum sapien at sagittis sagittis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vestibulum a interdum felis. Vestibulum ac nunc vel turpis posuere venenatis a eu arcu. Morbi vulputate massa sit amet dui consectetur efficitur. Phasellus a lobortis enim. Mauris hendrerit consectetur orci eget scelerisque.</p>
+            </div>
+            <div id="col2">
+                <h2>Section 1</h2>
+                <p><a href="#">Lipsum dolor</a> sit amet, consectetur adipiscing elit. Nunc ipsum quam, condimentum ac pulvinar sed, luctus sed libero. Vestibulum vestibulum sodales tellus, sit amet placerat nulla venenatis non. Nunc facilisis est eget facilisis sollicitudin. Proin placerat mi eget consequat congue. </p>
+                <p>Pellentesque finibus convallis magna, in convallis sapien fermentum id. Quisque rutrum sapien at sagittis sagittis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vestibulum a interdum felis. Vestibulum ac nunc vel turpis posuere venenatis a eu arcu. Morbi vulputate massa sit amet dui consectetur efficitur. Phasellus a lobortis enim. Mauris hendrerit consectetur orci eget scelerisque.</p>
+            </div>
+        </div>
+        <footer>
+            <ul id="bottomMenu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+            
+        </footer>
+        <script>
+            const getElements = (selector) => {
+                const element = document.querySelector(selector);
+ 
+                if (typeof element === 'undefined' || element === null) {
+                    return;
+                }
+ 
+                let elementsArr = [element];
+ 
+                const getChildren = (element) => {
+                    const elementChildren = element.childNodes;
+ 
+                    for (let index = 0; index < elementChildren.length; index++) {
+                        const child = elementChildren[index];
+ 
+                        if (child.nodeType === 1) {
+                            elementsArr = [...elementsArr, child];
+ 
+                            if (child.childNodes.length) {
+                                getChildren(child);
+                            }
+                        }
+                    }
+                };
+ 
+                getChildren(element);
+ 
+                return elementsArr;
+            };
+ 
+            console.log(getElements('#bottomMenu'));
+        </script>
+    </body>
+</html>
